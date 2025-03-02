@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: linear-gradient(to bottom, #73c5ea 50%, #fff 50%);
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* #Container {
+
+} */
+
+/* 輸入框 */
+#inputBlock {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+/* 外層容器 */
+.input-container {
+    position: relative;
+    width: 100%;
+   
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* 預留空間給按鈕 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* 調整按鈕在輸入框內部右側 */
+.input-container button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%); 
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #1e81b0;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+/* 按鈕 Hover 效果 */
+.input-container button:hover {
+    background-color: #0a3d55;
+}
+#tabsBlock{
+    display: flex;
+    justify-content: space-between; /* 讓 tabs 平均分布 */
+    align-items: center; /* 垂直置中 */
+    text-align: center;
+    gap: 10px; /* Tabs 之間增加間距 */
+}
+/* Tabs */
+.tabs {
+    flex: 1; /* 平均分配寬度 */
+    padding: 9px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border-bottom: 2px solid  #1e81b0; 
+}
+
+
+
+/* 記錄區塊 */
+#recordBlock {
+    width: 600px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+}
+
+/* 讓 titles 和 lists 在各列保持相同寬度 */
+li span {
+    flex: 1;
+    text-align: center;
+}
+
+/* 第一列標題加強效果 */
+li:first-child {
+    font-weight: bold;
+    background: #f1f1f1;
+}
+
+/* 圖示對齊 */
+i {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* 勾選圖示 Hover 效果 */
+#checkIcon:hover {
+    color: #19a470;
+}
+
+/* 垃圾桶圖示 Hover 效果 */
+#trashIcon:hover {
+    color: red;
+}
+
+
+
+
+

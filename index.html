@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" >   
+    <div id="inputBlock">
+        <div class="input-container">
+            <input placeholder="輸入代辦事項" type="text">
+            <button><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </div>
+    <div id="recordBlock">
+        <div id="tabsBlock" >
+            <div id="tabs1" class="tabs" >全部</div>
+            <div id="tabs2" class="tabs" >已完成</div>
+            <div id="tabs3" class="tabs" >待完成</div>
+        </div>
+        <ul>
+            <li>
+                <span class="titles">確認完成</span>
+                <span class="titles">代辦事項</span>
+                <span class="titles">紀錄日</span>
+                <span class="titles">完成日</span>
+                <span class="titles">狀態</span>
+                <span class="titles">刪除</span>
+            </li>
+            <li v-for="(todo,index) in todos" :key="todo.id">
+                <span><i class="fa-solid" :class="{'fa-square-check': todo.completed, 'fa-square': !todo.completed}"></i></span>
+                <span >{{todo.list}}</span>
+                <span >{{todo.createdAt}}</span>
+                <span >{{todo.finishAt}}</span>
+                <span >{{todo.completed ? '已完成':'未完成'}}</span>
+                <span ><i id="trashIcon" class="fa-solid fa-trash"></i></span>
+            </li>
+        </ul>
+    </div>
+</div> 
+    
+</div>    
+<script src="main.js" ></script>
+</body>
+</html>
