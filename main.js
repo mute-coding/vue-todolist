@@ -7,6 +7,23 @@ createApp({
                 {id:2,list:'背英文單字、做習題',createdAt:'2025/02/22',finishAt:'',completed:false}
             ]
         )
-        return {todos};
+        const filter = ref('all');
+        const filtertodos = computed(()=>{
+            if (filter.value === "completed") {
+                return todos.value.filter(todo => todo.completed);
+            } else if (filter.value === "pending") {
+                return todos.value.filter(todo => !todo.completed);
+            }
+            return todos.value;
+        })
+        const changeStute = (index) =>{
+            const todo = todos.value[index];
+            todo.completed = !todo.completed;
+            todo.finishAt = todo.completed ? new Date().toISOString().split('T')[0] : "";
+        }
+        const setFilter = (type) => {
+            filter.value = type;
+        }
+        return {todos,changeStute,filter,filtertodos,setFilter};
     }
 }).mount('#app');

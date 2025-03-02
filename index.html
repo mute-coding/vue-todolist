@@ -18,9 +18,9 @@
     </div>
     <div id="recordBlock">
         <div id="tabsBlock" >
-            <div id="tabs1" class="tabs" >全部</div>
-            <div id="tabs2" class="tabs" >已完成</div>
-            <div id="tabs3" class="tabs" >待完成</div>
+            <div id="tabs1" class="tabs" @click="setFilter('all')" >全部</div>
+            <div id="tabs2" class="tabs" @click="setFilter('completed')">已完成</div>
+            <div id="tabs3" class="tabs" @click="setFilter('pending')">待完成</div>
         </div>
         <ul>
             <li>
@@ -31,8 +31,8 @@
                 <span class="titles">狀態</span>
                 <span class="titles">刪除</span>
             </li>
-            <li v-for="(todo,index) in todos" :key="todo.id">
-                <span><i class="fa-solid" :class="{'fa-square-check': todo.completed, 'fa-square': !todo.completed}"></i></span>
+            <li v-for="(todo,index) in filtertodos" :key="todo.id">
+                <span><i id="checkIcon" @click="changeStute(index)" class="fa-solid fa-check" :style="{color:todo.completed ? '#19a470' : 'gray' }"></i></span>
                 <span >{{todo.list}}</span>
                 <span >{{todo.createdAt}}</span>
                 <span >{{todo.finishAt}}</span>
