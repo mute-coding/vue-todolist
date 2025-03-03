@@ -3,7 +3,7 @@ const { createApp, ref, computed } = Vue;
 createApp({
     setup() {
         const newtodoText = ref('');
-        const index = ref(1);
+        // const index = ref(1);
         const todos = ref([]);
         const filter = ref('all');
 
@@ -30,7 +30,7 @@ createApp({
             const item = newtodoText.value.trim();
             if (item) {
                 todos.value.push({
-                    id: index.value++,
+                    id: Date.now(),
                     list: item,
                     createdAt: new Date().toISOString().split('T')[0],
                     finishAt: "",

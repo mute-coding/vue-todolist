@@ -12,7 +12,7 @@
 <div id="app" >   
     <div id="inputBlock">
         <div class="input-container">
-            <input placeholder="輸入代辦事項" type="text" v-model="newtodoText">
+            <input placeholder="輸入代辦事項" type="text" v-model="newtodoText" @keyup.enter="addList">
             <button @click="addList"><i class="fa-solid fa-plus"></i></button>
         </div>
     </div>
