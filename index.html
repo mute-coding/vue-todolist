@@ -12,8 +12,8 @@
 <div id="app" >   
     <div id="inputBlock">
         <div class="input-container">
-            <input placeholder="輸入代辦事項" type="text">
-            <button><i class="fa-solid fa-plus"></i></button>
+            <input placeholder="輸入代辦事項" type="text" v-model="newtodoText">
+            <button @click="addList"><i class="fa-solid fa-plus"></i></button>
         </div>
     </div>
     <div id="recordBlock">
@@ -32,7 +32,7 @@
                 <span class="titles">刪除</span>
             </li>
             <li v-for="(todo,index) in filtertodos" :key="todo.id">
-                <span><i id="checkIcon" @click="changeStute(index)" class="fa-solid fa-check" :style="{color:todo.completed ? '#19a470' : 'gray' }"></i></span>
+                <span><i id="checkIcon" @click="changeStatus(index)" class="fa-solid fa-check" :style="{color:todo.completed ? '#19a470' : 'gray' }"></i></span>
                 <span >{{todo.list}}</span>
                 <span >{{todo.createdAt}}</span>
                 <span >{{todo.finishAt}}</span>
