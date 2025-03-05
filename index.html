@@ -18,9 +18,9 @@
     </div>
     <div id="recordBlock">
         <div id="tabsBlock" >
-            <div id="tabs1" class="tabs" @click="setFilter('all')" >全部</div>
-            <div id="tabs2" class="tabs" @click="setFilter('completed')">已完成</div>
-            <div id="tabs3" class="tabs" @click="setFilter('pending')">待完成</div>
+            <div id="tabs1" class="tabs" @click="setFilter('all')" :style="{ borderBottom: filter === 'all' ? '2px solid #1e81b0' : '2px solid gray' }" >全部</div>
+            <div id="tabs2" class="tabs" @click="setFilter('completed')" :style="{ borderBottom: filter === 'completed' ? '2px solid #1e81b0' : '2px solid gray' }">已完成</div>
+            <div id="tabs2" class="tabs" @click="setFilter('pending')" :style="{ borderBottom: filter === 'pending' ? '2px solid #1e81b0' : '2px solid gray' }">待完成</div>
         </div>
         <ul>
             <li>
@@ -37,7 +37,7 @@
                 <span >{{todo.createdAt}}</span>
                 <span >{{todo.finishAt}}</span>
                 <span >{{todo.completed ? '已完成':'未完成'}}</span>
-                <span ><i id="trashIcon" class="fa-solid fa-trash"></i></span>
+                <span ><i id="trashIcon" class="fa-solid fa-trash" @click="removeTodo(index)"></i></span>
             </li>
         </ul>
     </div>

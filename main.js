@@ -16,8 +16,8 @@ createApp({
             return todos.value;
         });
 
-        const changeStatus = (idx) => {
-            const todo = todos.value[idx];
+        const changeStatus = (index) => {
+            const todo = todos.value[index];
             todo.completed = !todo.completed;
             todo.finishAt = todo.completed ? new Date().toISOString().split('T')[0] : "";
         };
@@ -39,9 +39,10 @@ createApp({
                 newtodoText.value = ''; // 清空輸入框
             }
         };
-
-        const removeTodo = (idx) => {
-            todos.value.splice(idx, 1);
+        const removeTodo = (index) => {
+            if(confirm('確定要刪除嗎?')){
+                todos.value.splice(index, 1);
+            }
         };
 
         return { 
