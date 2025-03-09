@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -14,11 +15,19 @@ body {
     align-items: center;
     height: 100vh;
 }
+#app {
+    min-height: 550px;
+}
+#mainTitle{
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
 
-/* #Container {
-
-} */
-
+}
+#mainTitle p {
+    font-size: 4rem;
+    font-family: "Playwrite GB S", cursive;
+}
 /* 輸入框 */
 #inputBlock {
     display: flex;
@@ -89,7 +98,7 @@ body {
     width: 600px;
     background: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
@@ -135,7 +144,21 @@ i {
 #trashIcon:hover {
     color: red;
 }
-
+#switchPage {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+} 
+#switchPage i{
+    font-size: 22px;
+}
+#switchPage .leftIcon{
+    margin-right: 8px;
+}
+#switchPage .rightIcon{
+    margin-left: 8px;
+}
 
 
 

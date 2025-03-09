@@ -6,7 +6,10 @@ createApp({
         // const index = ref(1);
         const todos = ref([]);
         const filter = ref('all');
-
+        //目前頁數
+        const currentPage = ref(1);
+        //
+        const limitList = 4;
         const filtertodos = computed(() => {
             if (filter.value === "completed") {
                 return todos.value.filter(todo => todo.completed);
@@ -15,7 +18,15 @@ createApp({
             }
             return todos.value;
         });
-
+        //換頁後function
+        const newPage = computed(() =>{
+            const start = (currentPage.value - 1)*limitList;
+            return filtertodos.value.slice(start,start+limitList);
+        })
+        //總頁數
+        const totalPages =computed(() =>{
+            return Math.ceil(filtertodos.value.length/limitList);
+        })
         const changeStatus = (index) => {
             const todo = todos.value[index];
             todo.completed = !todo.completed;
@@ -41,19 +52,38 @@ createApp({
         };
         const removeTodo = (index) => {
             if(confirm('確定要刪除嗎?')){
-                todos.value.splice(index, 1);
+                const getList = newPage.value[index];
+                const findListIndex = todos.value.findIndex(todo => todo.id === getList.id);
+                if(findListIndex !== -1){
+                    todos.value.splice(findListIndex, 1);
+                }
             }
         };
 
+        const nextPage = () =>{
+            if(currentPage.value < totalPages.value){
+                currentPage.value++;
+            }
+        }
+        const postPage = () =>{
+            if(currentPage.value > 1){
+                currentPage.value--;
+            }
+        }
         return { 
             newtodoText, 
             todos, 
             filter, 
             filtertodos, 
+            currentPage,
+            newPage,
+            totalPages,
             changeStatus, 
             setFilter, 
             addList, 
-            removeTodo 
+            removeTodo,
+            nextPage,
+            postPage
         };
     }
 }).mount('#app');

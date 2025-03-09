@@ -9,41 +9,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app" >   
-    <div id="inputBlock">
-        <div class="input-container">
-            <input placeholder="輸入代辦事項" type="text" v-model="newtodoText" @keyup.enter="addList">
-            <button @click="addList"><i class="fa-solid fa-plus"></i></button>
+    <div id="app" >   
+        <div id="mainTitle" >
+            <p>TO-DO-LIST</p>
         </div>
-    </div>
-    <div id="recordBlock">
-        <div id="tabsBlock" >
-            <div id="tabs1" class="tabs" @click="setFilter('all')" :style="{ borderBottom: filter === 'all' ? '2px solid #1e81b0' : '2px solid gray' }" >全部</div>
-            <div id="tabs2" class="tabs" @click="setFilter('completed')" :style="{ borderBottom: filter === 'completed' ? '2px solid #1e81b0' : '2px solid gray' }">已完成</div>
-            <div id="tabs2" class="tabs" @click="setFilter('pending')" :style="{ borderBottom: filter === 'pending' ? '2px solid #1e81b0' : '2px solid gray' }">待完成</div>
+        <div id="inputBlock">
+            <div class="input-container">
+                <input placeholder="輸入代辦事項" type="text" v-model="newtodoText" @keyup.enter="addList">
+                <button @click="addList"><i class="fa-solid fa-plus"></i></button>
+            </div>
         </div>
-        <ul>
-            <li>
-                <span class="titles">確認完成</span>
-                <span class="titles">代辦事項</span>
-                <span class="titles">紀錄日</span>
-                <span class="titles">完成日</span>
-                <span class="titles">狀態</span>
-                <span class="titles">刪除</span>
-            </li>
-            <li v-for="(todo,index) in filtertodos" :key="todo.id">
-                <span><i id="checkIcon" @click="changeStatus(index)" class="fa-solid fa-check" :style="{color:todo.completed ? '#19a470' : 'gray' }"></i></span>
-                <span >{{todo.list}}</span>
-                <span >{{todo.createdAt}}</span>
-                <span >{{todo.finishAt}}</span>
-                <span >{{todo.completed ? '已完成':'未完成'}}</span>
-                <span ><i id="trashIcon" class="fa-solid fa-trash" @click="removeTodo(index)"></i></span>
-            </li>
-        </ul>
-    </div>
-</div> 
-    
-</div>    
+        <div id="recordBlock">
+            <div id="tabsBlock" >
+                <div id="tabs1" class="tabs" @click="setFilter('all')" :style="{ borderBottom: filter === 'all' ? '2px solid #1e81b0' : '2px solid gray' }" >全部</div>
+                <div id="tabs2" class="tabs" @click="setFilter('completed')" :style="{ borderBottom: filter === 'completed' ? '2px solid #1e81b0' : '2px solid gray' }">已完成</div>
+                <div id="tabs2" class="tabs" @click="setFilter('pending')" :style="{ borderBottom: filter === 'pending' ? '2px solid #1e81b0' : '2px solid gray' }">待完成</div>
+            </div>
+            <ul>
+                <li>
+                    <span class="titles">確認完成</span>
+                    <span class="titles">代辦事項</span>
+                    <span class="titles">紀錄日</span>
+                    <span class="titles">完成日</span>
+                    <span class="titles">狀態</span>
+                    <span class="titles">刪除</span>
+                </li>
+                <li class="defaultTest" v-if="filtertodos.length === 0">
+                    <span><p>{{filter === 'completed' ? '目前沒有任何完成事項' : '目前沒有任何代辦事項'}}</p></span>
+                </li>
+                <li v-for="(todo,index) in newPage" :key="todo.id">
+                    <span><i id="checkIcon" @click="changeStatus(index)" class="fa-solid fa-check" :style="{color:todo.completed ? '#19a470' : 'gray' }"></i></span>
+                    <span >{{todo.list}}</span>
+                    <span >{{todo.createdAt}}</span>
+                    <span >{{todo.finishAt}}</span>
+                    <span >{{todo.completed ? '已完成':'未完成'}}</span>
+                    <span ><i id="trashIcon" class="fa-solid fa-trash" @click="removeTodo(index)"></i></span>
+                </li>
+            </ul>
+            <div id="switchPage" >
+                <span class="leftIcon"><i class="fa-solid fa-caret-left" @click="postPage" :disabled="currentPage === 1"></i></span>
+                <span><p>{{currentPage}}/{{totalPages}}</p></span>
+                <span class="rightIcon"><i class="fa-solid fa-caret-right" @click="nextPage" :disabled="currentPage === totalPages"></i></span>
+            </div>
+        </div>
+    </div> 
+</body>
 <script src="main.js" ></script>
 </body>
 </html>
